@@ -1,0 +1,50 @@
+<% provide :title, t("home.signup") %>
+<div class="sign-in" style="min-height: 750px;">
+  <div class="col-sm-7 col-xs-7 sign-in-left">
+    <h2 class="text-left"><%= t "home.signup" %></h2>
+
+    <%= form_for resource, as: resource_name,
+      url: registration_path(resource_name) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="input">
+        <%= f.label :name %>
+        <%= f.text_field :name, autofocus: true, class: "form-control signin-input" %>
+      </div>
+
+      <div class="input">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, class: "form-control signin-input" %>
+      </div>
+
+      <div class="input">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+          <em><%= t "users.minimum_password_length",
+            minpasslength: @minimum_password_length %></em>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "off",
+          class: "form-control signin-input" %>
+      </div>
+
+      <div class="input">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, autocomplete: "off",
+          class: "form-control signin-input" %>
+      </div>
+
+      <div class="actions center">
+        <%= f.submit t("users.#{params[:action]}"),
+          class: "btn btn-primary submit-btn" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-sm-5 col-xs-5 sign-in-right">
+    <p><b><%= t "users.an_account" %></b></p>
+    <%= link_to t(:signin), new_user_session_path,
+      class: "btn btn-primary" %>
+    <p><b><%= t :or %></b></p>
+    <%#= link_to t("home.log_in_with_fb"),
+      user_facebook_omniauth_authorize_path, class: "btn btn-primary btn-fb" %>
+  </div>
+</div>

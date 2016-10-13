@@ -13,4 +13,19 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap-sprockets
 //= require_tree .
+
+var flash = function(){
+  setTimeout(function(){
+    $('.alert').slideUp(500);
+  }, 2000);
+  var x = $(window).height();
+  var y = x - 60;
+  $('.content').css('min-height', x);
+  $('.page-content').css('min-height', x);
+  $('.signin').css('min-height', y);
+};
+
+$(document).ready(flash);
+$(document).on('page:load', flash);

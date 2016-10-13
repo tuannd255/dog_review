@@ -20,4 +20,41 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  title: Dog Review
+  flash:
+    not_authorized: You don't have permition to do this action
+    record_not_found: Sorry, no record of %{column_name} was found!
+    subject_nil: Subject not found
+    cant_access: Can not access
+    unckeck: Exam uncheck
+  footer:
+    content: Footer
+  home:
+    log_in_with_fb: Log in with Facebook
+    min_chars: minimum characters
+    name: Home
+    signup: Sign up
+    title: Welcome to Training Framgia App
+  button:
+    new: Create
+    edit: Save change
+    create: Create
+    update: Save change
+    delete: Delete
+    init: Start
+    uncheck: View
+    checked: View
+  log_in: Log in
+  edit: Edit
+  action: Action
+  log_out: Log out
+  signin: Sign in
+  back: Back
+  rails: Rails tutorial
+  signup: Sign up now!
+  hello: Hello
+  in: in
+  or: Or
+  users:
+    new: Sign Up
+    create: Sign Up
