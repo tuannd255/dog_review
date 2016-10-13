@@ -41,6 +41,7 @@ gem "exception_notification"
 gem "business_time"
 gem "paranoia", github: "rubysherpas/paranoia", branch: "rails5"
 gem "listen"
+gem "omniauth-facebook"
 
 group :development, :test do
   gem "fabrication"
@@ -50,6 +51,5 @@ group :development, :test do
   gem "letter_opener"
   gem "faker", "1.4.2"
   gem "i18n-tasks", "~> 0.8.7"
-  gem "rspec-rails", "~> 3.0"
   gem "bullet"
 end
