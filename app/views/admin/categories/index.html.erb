@@ -1,0 +1,19 @@
+<% provide :title, t("categories.title") %>
+<div id="categories">
+  <div class="row a-dog">
+    <div class="col-md-10 col-md-offset-1">
+      <table class="table table-hover table-striped row">
+        <thead>
+          <tr>
+            <th class="col-sm-4 col-xs-4"><%= t "categories.name" %></th>
+            <th class="col-sm-4 col-xs-4"><%= t "categories.image_total" %></th>
+            <th class="col-sm-4 col-xs-4"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render @categories %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

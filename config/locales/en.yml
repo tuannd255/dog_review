@@ -20,9 +20,6 @@ en:
     create: Create
     update: Save change
     delete: Delete
-    init: Start
-    uncheck: View
-    checked: View
   log_in: Log in
   edit: Edit
   action: Action
@@ -40,3 +37,39 @@ en:
   error:
     contain: Contain
     number: Number
+  categories:
+    title: Categories
+    created: Category Created
+    updateed: Category Updated
+    deleted: Category Deleted
+    not_delete: Category Not Delete
+    name: Name
+    image_total: Image Total
+    new: New
+    edit: Edit
+  dogs:
+    title: Dogs
+    created: Dog Created
+    updateed: Dog Updated
+    deleted: Dog Deleted
+    not_delete: Dog Not Delete
+    weight: Weight
+    kg: Kg
+    height: Height
+    cm: Cm
+    avg_life_expectancy: Avg Life Expectancy
+    year: Year
+    new: New
+    please_input_weight: Please Input Weight
+    please_input_height: Please Input Height
+  users:
+    title: Users
+    deleted: User Deleted
+    not_delete: User Not Delete
+    name: Name
+    email: Email
+    total_image: Total Image
+    image: (Images)
+    delete: Delete
+  delete:
+    confirm: Are you sure delete %{name}

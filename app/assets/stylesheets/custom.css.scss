@@ -380,214 +380,6 @@ footer ul li {
     color: $state-danger-text;
   }
 }
-.btn {
-  margin: 5px;
-  width: 150px;
-}
-.height {
-  select {
-    @extend .form-control;
-  }
-}
-.users {
-  .btn {
-    margin: 0px;
-    width: 70px;
-  }
-  .user-field {
-    margin: 5px;
-  }
-}
-.table-question {
-  .btn {
-    width: 70px;
-  }
-  td {
-    width: 33%;
-  }
-}
-thead {
-  background-color: #E1E1E1;
-}
-.exams-index {
-  margin-top: 30px;
-}
-.exams-index {
-  .init {
-    @extend .btn-primary;
-    padding: 2px;
-    border-radius: 4px;
-  }
-  .uncheck {
-    @extend .btn-danger;
-    padding: 2px;
-    border-radius: 4px;
-  }
-  .checked {
-    @extend .btn-info;
-    padding: 2px;
-    border-radius: 4px;
-  }
-  .testing {
-    @extend .btn-warning;
-    padding: 2px;
-    border-radius: 4px;
-  }
-  .btn-view {
-    margin: 0px;
-    width: 80px;
-    padding: 3px;
-  }
-}
-#clock {
-  font-size: 16px;
-  font-weight: bold;
-  border: none !important;
-  background-color: inherit !important;
-}
-
-.timer {
-  border: 1px solid #E6E6E6;
-  background-color: #CECECE;
-  float: right;
-  position: fixed;
-  right: 70px;
-  top: 70px;
-  width: 200px;
-}
-.button-exam {
-  position: fixed;
-  right: 70px;
-  background-color: #fff;
-  top: 200px;
-  border: none;
-  .btn {
-    width: 90px;
-  }
-}
-.admin-exam {
-  top: 70px;
-}
-.do-exam {
-  margin-top: 30px;
-  .question-title {
-    height: 30px;
-    font-size: 18px;
-    margin: 5px 0 20px 0;
-    font-weight: bold;
-  }
-  .question-content {
-    position: relative;
-    margin: 10px 0;
-    input[type="checkbox"] {
-      cursor: pointer;
-      position: absolute;
-      width: 100%;
-      left: -365px;
-      -ms-transform: scale(2);
-      -moz-transform: scale(2);
-      -webkit-transform: scale(2);
-      -o-transform: scale(2);
-      padding: 10px;
-    }
-    span {
-      margin-left: 50px;
-      font-weight: normal;
-      font-size: 16px;
-    }
-    .list-group-item-success {
-      color: red;
-      background: transparent;
-    }
-  }
-  .question-content:hover {
-    background-color: #cecece;
-  }
-  .true {
-    select {
-      @extend .form-control;
-      width: 200px;
-      background-color: green;
-      color: #fff;
-      font-size: 18px;
-    }
-  }
-  .false {
-    select {
-      @extend .form-control;
-      width: 200px;
-      background-color: pink;
-      font-size: 18px;
-    }
-  }
-  .true-show {
-    color: green;
-    font-size: 18px;
-  }
-  .false-show {
-    color: red;
-    font-size: 18px;
-  }
-}
-@media(max-width:1192px) {
-  .do-exam {
-    .question-content {
-      input[type="checkbox"] {
-        left: -250px;
-      }
-    }
-  }
-}
-@media(min-width:1400px) {
-  .do-exam {
-    .question-content {
-      input[type="checkbox"] {
-        left: -415px;
-      }
-    }
-  }
-}
-.suggest-question {
-  td {
-    width: 25%;
-  }
-  .btn-suggest {
-    width: 70px;
-    margin: 0;
-    padding: 2px;
-  }
-  .wait {
-    @extend .btn-warning;
-    padding: 3px;
-    border-radius: 4px;
-  }
-  .approve {
-    @extend .btn-success;
-    padding: 3px;
-    border-radius: 4px;
-  }
-  .reject {
-    @extend .btn-danger;
-    padding: 3px;
-    border-radius: 4px;
-  }
-}
-.admin-suggest-question {
-  td {
-    width: 20%;
-  }
-  .btn {
-    width: 60px;
-    margin: 0;
-    padding: 2px;
-  }
-  .btn-approve {
-    @extend .btn-primary;
-  }
-  .btn-reject {
-    @extend .btn-danger;
-  }
-}
 .sign-in {
   padding-top: 100px;
   color: #fff;
@@ -609,14 +401,33 @@ thead {
     padding: 0 100px 0 100px;
   }
 }
-.subjects {
-  padding-top: 50px;
-}
 .btn-fb {
   width: 200px;
 }
-.subject-index {
-  td {
-    width: 33%;
+.a-dog {
+  padding: 20px;
+}
+.image {
+  max-width: 310px;
+}
+#dogs, #categories {
+  .form-dog {
+    margin-top: 30px;
+  }
+  .dog-view:hover {
+    background-color: #fafafa;
+  }
+  .content-dog {
+    padding: 10px;
+    color: #000;
+  }
+}
+#users {
+  .dog-view:hover {
+    background-color: #fafafa;
+  }
+  .content-dog {
+    padding: 10px;
+    color: #000;
   }
 }

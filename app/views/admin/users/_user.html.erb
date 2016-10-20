@@ -1,0 +1,5 @@
+<tr>
+  <td><%= link_to user.name, [:admin, user] %></td>
+  <td><%= link_to user.email, [:admin, user] %></td>
+  <td><%= user.dogs.any? ? user.dogs.size : 0 %></td>
+</tr>

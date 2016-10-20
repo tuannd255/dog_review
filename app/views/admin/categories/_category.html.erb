@@ -1,0 +1,5 @@
+<tr>
+  <td><%= link_to category.name, [:admin, category] %></td>
+  <td><%= category.dogs.any? ? category.dogs.size : 0 %></td>
+  <td><%= link_to t("categories.edit"), edit_admin_category_path(category) %></td>
+</tr>
