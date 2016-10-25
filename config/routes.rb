@@ -11,6 +11,5 @@ Rails.application.routes.draw do
   end
   root "dogs#index"
   resources :users
-  resources :categories
   resources :dogs
 end
