@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :rememberable, :validatable,
     :omniauthable, :recoverable
 
+  has_many :reviews, dependent: :destroy
+  has_many :dogs, dependent: :destroy
+
   class << self
     def from_omniauth auth
       find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|

@@ -53,3 +53,9 @@ group :development, :test do
   gem "i18n-tasks", "~> 0.8.7"
   gem "bullet"
 end
+
+group :production do
+  gem "pg", "0.19.0"
+  gem "rails_12factor", "0.0.2"
+  gem "faker", "1.4.2"
+end

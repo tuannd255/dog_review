@@ -1,0 +1,19 @@
+<% provide :title, @category.name %>
+<div id="categorys">
+  <div class="row table table-striped text-center">
+    <div class="col-sm-4 col-xs-4">
+      <%= @category.name %>
+    </div>
+    <div class="col-sm-4 col-xs-4">
+      <%= @category.dogs.any? ? @category.dogs.size : 0 %>
+      <%= t "categorys.image" %>
+    </div>
+    <div class="col-sm-4 col-xs-4">
+      <%= link_to t("categorys.delete"), admin_category_path(@category), method: :delete,
+        data: {confirm: t("delete.confirm", name: @category.name)},
+        class: "btn btn-danger" %>
+    </div>
+  </div>
+  <hr />
+  <%= render @category.dogs %>
+</div>

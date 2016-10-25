@@ -1,0 +1,22 @@
+<% provide :title, @user.name %>
+<div id="users">
+  <div class="row table table-striped text-center">
+    <div class="col-sm-3 col-xs-3">
+      <%= @user.name %>
+    </div>
+    <div class="col-sm-3 col-xs-3">
+      <%= @user.email %>
+    </div>
+    <div class="col-sm-3 col-xs-3">
+      <%= @user.dogs.any? ? @user.dogs.size : 0 %>
+      <%= t "users.image" %>
+    </div>
+    <div class="col-sm-3 col-xs-3">
+      <%= link_to t("users.delete"), admin_user_path(@user), method: :delete,
+        data: {confirm: t("delete.confirm", name: @user.name)},
+        class: "btn btn-danger" %>
+    </div>
+  </div>
+  <hr />
+  <%= render @user.dogs %>
+</div>

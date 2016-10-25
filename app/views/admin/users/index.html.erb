@@ -1,0 +1,17 @@
+<% provide :title, t("users.title") %>
+<div id="users">
+  <div class="col-md-10 col-md-offset-1">
+    <table class="table table-striped table-hover row">
+      <thead>
+        <tr>
+          <th class="col-sm-4 col-xs-4"><%= t "users.name" %></th>
+          <th class="col-sm-4 col-xs-4"><%= t "users.email" %></th>
+          <th class="col-sm-4 col-xs-4"><%= t "users.total_image" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @users %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="form-category">
+  <%= form_for [:admin, @category] do |f| %>
+    <%= render "shared/error_messages", object: @category %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+      <%= f.submit t("button.#{params[:action]}"),
+        class: "btn btn-primary pull-right" %>
+    </div>
+  <% end %>
+</div>
