@@ -9,6 +9,8 @@ class Ability
       if namespace == "admin"
         cannot :manage, :all
       end
+      can :read, Dog
+      can :manage, Review
     end
   end
 end

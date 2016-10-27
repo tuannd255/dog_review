@@ -3,7 +3,7 @@ class Admin::DogsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @dogs = Category.first.dogs
+    @dogs = Category.first.dogs if Category.first
   end
 
   def new

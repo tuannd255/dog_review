@@ -29,3 +29,5 @@ var flash = function(){
 
 $(document).ready(flash);
 $(document).on('page:load', flash);
+
+

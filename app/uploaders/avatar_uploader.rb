@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class ImageUploader < CarrierWave::Uploader::Base
+class AvatarUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -48,6 +48,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
   def public_id
-    return "#{model.class.to_s.underscore}-#{model.image.file.filename}"
+    return "#{model.class.to_s.underscore}-#{model.avatar.file.filename}"
   end
 end

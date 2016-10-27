@@ -31,9 +31,6 @@ en:
   hello: Hello
   in: in
   or: Or
-  users:
-    new: Sign Up
-    create: Sign Up
   error:
     contain: Contain
     number: Number
@@ -62,6 +59,7 @@ en:
     new: New
     please_input_weight: Please Input Weight
     please_input_height: Please Input Height
+    origin: Origin
   users:
     title: Users
     deleted: User Deleted
@@ -71,5 +69,11 @@ en:
     total_image: Total Image
     image: (Images)
     delete: Delete
+    edit: Edit
+    save: Save
+    new: Sign Up
+    create: Sign Up
   delete:
     confirm: Are you sure delete %{name}
+  reviews:
+    content: Please Input Review

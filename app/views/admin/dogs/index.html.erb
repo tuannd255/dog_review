@@ -1,5 +1,7 @@
 <% provide :title, t("dogs.title") %>
 <div id="dogs">
+  <h3><%= link_to t("categories.new"), new_admin_dog_path,
+    class: "btn btn-success" %></h2>
   <div class="row a-dog">
     <%= render @dogs %>
   </div>

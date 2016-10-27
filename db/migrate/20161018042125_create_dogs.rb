@@ -7,6 +7,7 @@ class CreateDogs < ActiveRecord::Migration[5.0]
       t.integer :height
       t.integer :avg_life_expectancy
       t.string :origin
+      t.text :description
       t.references :category, foreign_key: true
       t.references :user, foreign_key: true
 

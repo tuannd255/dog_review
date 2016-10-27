@@ -42,6 +42,7 @@ gem "business_time"
 gem "paranoia", github: "rubysherpas/paranoia", branch: "rails5"
 gem "listen"
 gem "omniauth-facebook"
+gem "cloudinary"
 
 group :development, :test do
   gem "fabrication"
