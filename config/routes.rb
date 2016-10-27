@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :categories
     resources :users
     resources :dogs
+    resources :reviews
   end
   root "dogs#index"
   resources :users

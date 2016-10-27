@@ -2,7 +2,9 @@
 <div id="dogs">
   <div class="row a-dog">
     <div class="col-md-10 col-md-offset-1">
-      <%= render @dogs %>
+  <h3><%= link_to t("categories.new"), new_dog_path,
+    class: "btn btn-success" %></h2>
+      <%= render @dogs if @dogs %>
     </div>
   </div>
 </div>

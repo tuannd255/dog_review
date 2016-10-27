@@ -10,6 +10,7 @@ class Admin::DogsController < ApplicationController
   end
 
   def create
+    @dog = current_user.dogs.build dogs_params
     if @dog.save
       flash[:success] = t "dogs.created"
       redirect_to admin_dogs_path
@@ -23,6 +24,7 @@ class Admin::DogsController < ApplicationController
   end
 
   def show
+    @review = Review.new
   end
 
   def update
@@ -36,12 +38,18 @@ class Admin::DogsController < ApplicationController
   end
 
   def destroy
+    if @dog.destroy
+      flash[:success] = "Successfully deleted..."
+    else
+      flash[:danger] = "Not deleted..."
+    end
+    redirect_to admin_dogs_path
   end
 
   private
   def dogs_params
-    params.require(:dog).permit :name, :width, :height, :origin, :category_id,
-      {images: []}
+    params.require(:dog).permit :name, :weight, :height, :origin, :category_id,
+      :description, :avg_life_expectancy, {images: []}
   end
 
   def load_categories

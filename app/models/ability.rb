@@ -9,8 +9,11 @@ class Ability
       if namespace == "admin"
         cannot :manage, :all
       end
-      can :read, Dog
+      can [:read, :create], Dog
       can :manage, Review
+      can [:edit, :update, :read], User do |other_user|
+        user == other_user
+      end
     end
   end
 end

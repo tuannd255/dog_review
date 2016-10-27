@@ -1,4 +1,4 @@
-class ReviewsController < ApplicationController
+class Admin::ReviewsController < ApplicationController
   load_and_authorize_resource
 
   def create

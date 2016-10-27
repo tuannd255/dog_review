@@ -16,7 +16,7 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-var flash = function(){
+$(document).on("turbolinks:load", function() {
   setTimeout(function(){
     $('.alert').slideUp(500);
   }, 2000);
@@ -25,9 +25,6 @@ var flash = function(){
   $('.content').css('min-height', x);
   $('.page-content').css('min-height', x);
   $('.signin').css('min-height', y);
-};
-
-$(document).ready(flash);
-$(document).on('page:load', flash);
+});
 
 
