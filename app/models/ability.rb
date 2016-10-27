@@ -10,6 +10,7 @@ class Ability
         cannot :manage, :all
       end
       can :read, Dog
+      can :manage, Review
     end
   end
 end

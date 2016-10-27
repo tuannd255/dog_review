@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   root "dogs#index"
   resources :users
   resources :dogs
+  resources :reviews
 end

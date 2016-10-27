@@ -17,6 +17,6 @@ class DogsController < ApplicationController
 
   def load_data
     @dog = Dog.includes(:reviews).find_by id: params[:id]
-    @review = current_user.reviews.build dog_id: @dog.id
+    @review = Review.new
   end
 end
