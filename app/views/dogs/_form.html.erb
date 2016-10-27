@@ -1,5 +1,5 @@
 <div class="form-dog">
-  <%= form_for [:admin, @dog] do |f| %>
+  <%= form_for @dog do |f| %>
     <%= render "shared/error_messages", object: @dog %>
     <div class="form-group">
     <%= f.label :category %>

@@ -1,0 +1,82 @@
+<% provide :title, @dog.name %>
+<div id="dogs">
+  <div class="show-dog row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="dog-view">
+            <div class="image-dog text-center">
+              <%= set_image_dog @dog %>
+            </div>
+            <h2><%= @dog.name %></h2>
+            <div class="content-dog">
+              <div class="rate"></div>
+              <div class="row">
+                <div class="col-md-6 col-xs-6 center">
+                  <b><%= t "dogs.weight" %>: </b>
+                  <%= @dog.weight %>
+                  <%= t "dogs.kg" %>
+                </div>
+                <div class="col-md-6 col-xs-6">
+                  <b><%= t "dogs.height" %>: </b>
+                  <%= @dog.height %>
+                  <%= t "dogs.cm" %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 col-xs-6">
+                  <b class="pull-right"><%= t "dogs.avg_life_expectancy" %>: </b>
+                </div>
+                <div class="col-md-6 col-xs-6">
+                  <span class="pull-left">
+                    <%= @dog.avg_life_expectancy %>
+                    <%= t "dogs.year" %>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7 col-md-offset-1">
+          <div class="dog-content">
+            <p><b><%= t "dogs.name" %>: </b><%= @dog.name %></p>
+            <p><b><%= t "dogs.origin" %>: </b><%= @dog.origin %></p>
+            <p><b><%= t "dogs.description" %>: </b><%= @dog.description %></p>
+            <%= link_to "View all dog", dogs_path, class: "btn btn-info" %>
+            <%= link_to "Write a reviews", "#review_content",
+              class: "btn btn-primary" %>
+          </div>
+          <br>
+          <div>
+            <%= render @dog.reviews %>
+          </div>
+          <hr>
+          <div>
+            <%= form_for [:admin, @review] do |f| %>
+              <%= render "shared/error_messages", object: @review %>
+              <div class="form-group">
+                <div><%= f.label :rate_this_dog %></div>
+                  <div class="rating text-left">
+                    <span value="1" class="star" data-id="5">☆</span>
+                    <span value="2" class="star" data-id="4">☆</span>
+                    <span value="3" class="star" data-id="3">☆</span>
+                    <span value="4" class="star" data-id="2">☆</span>
+                    <span value="5" class="star" data-id="1">☆</span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div><%= f.label :content %></div>
+                <%= f.text_area :content, placeholder: t("reviews.content"),
+                  class: "form-control height-text-area" %>
+              </div>
+              <%= f.hidden_field :dog_id, value: @dog.id %>
+              <%= f.hidden_field :user_id, value: @current_user.id %>
+              <%= f.submit :Submit, class: "btn btn-primary" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

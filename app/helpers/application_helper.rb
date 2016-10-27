@@ -13,6 +13,10 @@ module ApplicationHelper
     image_tag user.avatar_url ? user.avatar_url : "http://imageshack.com/a/img922/7474/6SiM0b.gif", size: "50x50", class: "img-circle"
   end
 
+    def set_avatar_user_header user, class_name = "img-circle"
+    image_tag user.avatar_url ? user.avatar_url : "http://imageshack.com/a/img922/7474/6SiM0b.gif", size: "20x20", class: "img-circle"
+  end
+
   def current_user? user
     user == current_user
   end

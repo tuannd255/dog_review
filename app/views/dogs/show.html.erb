@@ -45,6 +45,9 @@
             <%= link_to "View all dog", dogs_path, class: "btn btn-info" %>
             <%= link_to "Write a reviews", "#review_content",
               class: "btn btn-primary" %>
+            <%= link_to t("users.delete"), @dog, method: :delete,
+              data: {confirm: t("delete.confirm", name: @dog.name)} if
+              current_user?(@dog.user) %>
           </div>
           <br>
           <div>
@@ -72,7 +75,7 @@
               </div>
               <%= f.hidden_field :dog_id, value: @dog.id %>
               <%= f.hidden_field :user_id, value: @current_user.id %>
-              <%= f.submit :Submit, class: "btn btn-primary" %>
+              <%= f.submit "Submit", class: "btn btn-primary" %>
             <% end %>
           </div>
         </div>

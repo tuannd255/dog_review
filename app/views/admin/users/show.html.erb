@@ -14,7 +14,7 @@
     <div class="col-sm-3 col-xs-3">
       <%= link_to t("users.delete"), admin_user_path(@user), method: :delete,
         data: {confirm: t("delete.confirm", name: @user.name)},
-        class: "btn btn-danger" %>
+        class: "btn btn-danger" unless @user.is_admin? %>
     </div>
   </div>
   <hr />
