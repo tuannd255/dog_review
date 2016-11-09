@@ -291,12 +291,12 @@ GEM
     rake (11.3.0)
     ranked-model (0.4.0)
       activerecord (>= 3.1.12)
-    ransack (1.8.2)
+    ransack (1.7.0)
       actionpack (>= 3.0)
       activerecord (>= 3.0)
       activesupport (>= 3.0)
       i18n
-      polyamorous (~> 1.3)
+      polyamorous (~> 1.2)
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
@@ -417,7 +417,7 @@ DEPENDENCIES
   rails (~> 5.0.0)
   rails_12factor (= 0.0.2)
   ranked-model
-  ransack
+  ransack (= 1.7)
   redis (~> 3.0)
   routing-filter!
   sass-rails (~> 5.0)

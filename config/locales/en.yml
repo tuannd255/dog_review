@@ -73,7 +73,9 @@ en:
     save: Save
     new: Sign Up
     create: Sign Up
+    search: Search
   delete:
     confirm: Are you sure delete %{name}
   reviews:
     content: Please Input Review
+  add_condition: "Add Condition"

@@ -17,7 +17,6 @@ gem "sdoc", "~> 0.4.0", group: :doc
 gem "settingslogic"
 gem "devise"
 gem "cancancan"
-gem "ransack"
 gem "draper", github: "audionerd/draper", branch: "rails5"
 gem "kaminari"
 gem "bootstrap-kaminari-views"
@@ -43,6 +42,7 @@ gem "paranoia", github: "rubysherpas/paranoia", branch: "rails5"
 gem "listen"
 gem "omniauth-facebook"
 gem "cloudinary"
+gem "ransack", "1.7"
 
 group :development, :test do
   gem "fabrication"

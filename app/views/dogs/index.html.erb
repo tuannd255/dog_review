@@ -2,9 +2,16 @@
 <div id="dogs">
   <div class="row a-dog">
     <div class="col-md-10 col-md-offset-1">
-  <h3><%= link_to t("categories.new"), new_dog_path,
-    class: "btn btn-success" %></h2>
-      <%= render @dogs if @dogs %>
+      <h3><%= link_to t("categories.new"), new_dog_path,
+        class: "btn btn-success" %></h2>
+      <%= search_form_for @search, remote: true, url: dogs_path do |f| %>
+        <%= f.condition_fields do |c| %>
+          <%= render "condition_fields", f: c, c: f %>
+        <% end %>
+        <%= link_to_add_fields t(:add_condition), f, :condition %>
+      <% end %>
+      <div class="all-dog"><%= render @dogs if @dogs %></div>
+      <%= paginate @dogs %>
     </div>
   </div>
 </div>
