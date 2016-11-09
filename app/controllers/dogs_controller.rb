@@ -4,7 +4,13 @@ class DogsController < ApplicationController
   before_action :load_data, only: :show
 
   def index
-    @dogs = Category.first.dogs if Category.first
+    @search = Dog.search params[:q]
+    @dogs = @search.result.page params[:page]
+    @search.build_condition
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show

@@ -424,6 +424,10 @@ footer ul li {
   .dog-view {
     padding-top: 30px;
   }
+
+  .user-field select {
+    @extend .form-control;
+  }
   .show-dog {
     .dog-view {
       padding-top: 30px;
@@ -443,6 +447,7 @@ footer ul li {
       margin-top: 10px;
       margin-bottom: 10px;
     }
+
     .rating > span:hover:before {
       content: "\2605";
       position: absolute;

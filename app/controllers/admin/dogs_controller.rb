@@ -49,7 +49,7 @@ class Admin::DogsController < ApplicationController
   private
   def dogs_params
     params.require(:dog).permit :name, :weight, :height, :origin, :category_id,
-      :description, :avg_life_expectancy, {images: []}
+      :description, :avg_life_expectancy, :image
   end
 
   def load_categories
