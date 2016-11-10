@@ -411,6 +411,9 @@ footer ul li {
   max-width: 310px;
 }
 #dogs, #categories {
+  #search {
+    @extend .form-control;
+  }
   .form-dog {
     margin-top: 30px;
   }
