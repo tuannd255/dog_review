@@ -7,11 +7,14 @@
       <%= link_to review.user_name, review.user %>
       <%= time_ago_in_words review.created_at %>
     </p>
-    <%= review.content.html_safe %>
+    <span class="review-<%= review.id %>"><%= review.content.html_safe %></span>
   </div>
   <div class="col-md-2">
-    <%= link_to t("categorys.delete"), review_path(review),
-      method: :delete,
+    <%= link_to t("categories.edit"), "#review_content", class: "edit-review",
+      data: {id: "#{review.id}"} if
+      current_user?(review.user) %>
+    <%= link_to t("categories.delete"), review_path(review),
+      method: :delete, class: "color-red",
       data: {confirm: "Are you sure?"} if current_user?(review.user) %>
   </div>
 </div>

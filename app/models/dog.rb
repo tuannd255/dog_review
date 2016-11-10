@@ -8,10 +8,4 @@ class Dog < ApplicationRecord
   validates :weight, presence: true
   validates :height, presence: true
   validates :avg_life_expectancy, presence: true
-
-  # UNRANSACKABLE_ATTRIBUTES = ["name"]
-
-  # def self.ransackable_attributes auth_object = nil
-  #   UNRANSACKABLE_ATTRIBUTES + _ransackers.keys
-  # end
 end
