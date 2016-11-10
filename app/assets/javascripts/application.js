@@ -39,6 +39,47 @@ $(document).on("turbolinks:load", function() {
     return event.preventDefault();
     checkbox();
   });
+
+  $("#rate-1").click(function(){
+    $("#rate-1").before().addClass("color-hover");
+    $("#rate-2").before().removeClass("color-hover");
+    $("#rate-3").before().removeClass("color-hover");
+    $("#rate-4").before().removeClass("color-hover");
+    $("#rate-5").before().removeClass("color-hover");
+    $("#review_rate").val(1);
+  });
+  $("#rate-2").click(function(){
+    $("#rate-2").before().addClass("color-hover");
+    $("#rate-1").before().addClass("color-hover");
+    $("#rate-3").before().removeClass("color-hover");
+    $("#rate-4").before().removeClass("color-hover");
+    $("#rate-5").before().removeClass("color-hover");
+    $("#review_rate").val(2);
+  });
+  $("#rate-3").click(function(){
+    $("#rate-2").before().addClass("color-hover");
+    $("#rate-1").before().addClass("color-hover");
+    $("#rate-3").before().addClass("color-hover");
+    $("#rate-4").before().removeClass("color-hover");
+    $("#rate-5").before().removeClass("color-hover");
+    $("#review_rate").val(3);
+  });
+  $("#rate-4").click(function(){
+    $("#rate-2").before().addClass("color-hover");
+    $("#rate-1").before().addClass("color-hover");
+    $("#rate-3").before().addClass("color-hover");
+    $("#rate-4").before().addClass("color-hover");
+    $("#rate-5").before().removeClass("color-hover");
+    $("#review_rate").val(4);
+  });
+  $("#rate-5").click(function(){
+    $("#rate-2").before().addClass("color-hover");
+    $("#rate-1").before().addClass("color-hover");
+    $("#rate-3").before().addClass("color-hover");
+    $("#rate-4").before().addClass("color-hover");
+    $("#rate-5").before().addClass("color-hover");
+    $("#review_rate").val(5);
+  });
 });
 
 

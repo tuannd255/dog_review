@@ -10,6 +10,15 @@ class ReviewsController < ApplicationController
     redirect_to @review.dog
   end
 
+  def update
+    if @review.update_attributes review_params
+      flash[:success] = "Successfully reviewed..."
+    else
+      flash[:danger] = "Not reviewed..."
+    end
+    redirect_to @review.dog
+  end
+
   def destroy
     dog = @review.dog
     if @review.destroy
