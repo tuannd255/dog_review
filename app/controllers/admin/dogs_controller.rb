@@ -1,6 +1,7 @@
 class Admin::DogsController < ApplicationController
   before_action :load_categories, only: [:index, :edit, :new]
   load_and_authorize_resource
+  before_action :authenticate_user!
 
   def index
     @filter_dogs = ["name", "weight", "height"]

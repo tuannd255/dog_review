@@ -1,5 +1,6 @@
 class Admin::CategoriesController < ApplicationController
   load_and_authorize_resource
+  before_action :authenticate_user!
 
   def index
     @categories = @categories.includes(:dogs) if @categories

@@ -2,6 +2,7 @@ class DogsController < ApplicationController
   load_and_authorize_resource
   before_action :load_categories, only: [:index, :new, :edit]
   before_action :load_data, only: :show
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @filter_dogs = ["name", "weight", "height"]

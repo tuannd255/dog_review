@@ -16,8 +16,7 @@ Category.all.each do |category|
   User.all.each do |user|
     5.times do |n|
       Dog.create name: Faker::Name.name, weight: 20, height: 20,
-        avg_life_expectancy: 10, origin: Faker::Name.name, category_id: category.id, user_id: user.id
+        avg_life_expectancy: 10, origin: Faker::Name.name, category_id: category.id, user_id: user.id, description: Faker::Lorem.paragraph(20)
     end
   end
 end
-
