@@ -3,7 +3,17 @@ class Admin::DogsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @dogs = Category.first.dogs if Category.first
+    @filter_dogs = ["name", "weight", "height"]
+    @dogs = if params[:commit].present?
+      Dog.search params[:search_dog], params[:search]
+    else
+      @dogs
+    end
+    @dogs = @dogs.page params[:page]
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new

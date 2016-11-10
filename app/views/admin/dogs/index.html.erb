@@ -1,8 +1,25 @@
 <% provide :title, t("dogs.title") %>
 <div id="dogs">
-  <h3><%= link_to t("categories.new"), new_admin_dog_path,
-    class: "btn btn-success" %></h2>
   <div class="row a-dog">
-    <%= render @dogs if @dogs %>
+    <div class="col-md-10 col-md-offset-1">
+      <h3><%= link_to t("categories.new"), new_dog_path,
+        class: "btn btn-success" %></h3>
+      <div class="search-form">
+        <%= form_tag dogs_path, remote: true, method: :get do %>
+          <%= label_tag :search_dog %>
+          <div class="fl-div-dog row" id="search-dog-form">
+            <div class="col-sm-4"><%= select_tag :search_dog,
+              options_for_select(@filter_dogs), class: "form-control" %>
+            </div>
+            <div class="col-sm-4"><%= text_field_tag :search %></div>
+            <div class="col-sm-4"><%= submit_tag :Search,
+              class: "btn btn-primary" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="all-dog"><%= render @dogs if @dogs %></div>
+    </div>
   </div>
+  <%= paginate @dogs %>
 </div>

@@ -4,9 +4,13 @@ class DogsController < ApplicationController
   before_action :load_data, only: :show
 
   def index
-    @search = Dog.search params[:q]
-    @dogs = @search.result.page params[:page]
-    @search.build_condition
+    @filter_dogs = ["name", "weight", "height"]
+    @dogs = if params[:commit].present?
+      Dog.search params[:search_dog], params[:search]
+    else
+      @dogs
+    end
+    @dogs = @dogs.page params[:page]
     respond_to do |format|
       format.html
       format.js
@@ -55,7 +59,7 @@ class DogsController < ApplicationController
   private
   def dogs_params
     params.require(:dog).permit :name, :weight, :height, :origin, :category_id,
-      :description, :avg_life_expectancy, {images: []}
+      :description, :avg_life_expectancy, :image
   end
 
   def load_categories

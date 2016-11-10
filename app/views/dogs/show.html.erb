@@ -45,7 +45,9 @@
             <%= link_to "View all dog", dogs_path, class: "btn btn-info" %>
             <%= link_to "Write a reviews", "#review_content",
               class: "btn btn-primary" %>
-            <%= link_to t("users.delete"), @dog, method: :delete,
+            <%= link_to "Edit",edit_dog_path(@dog) if
+              current_user?(@dog.user) %>
+            <%= link_to t("users.delete"), @dog, method: :delete, class: "color-red",
               data: {confirm: t("delete.confirm", name: @dog.name)} if
               current_user?(@dog.user) %>
           </div>
