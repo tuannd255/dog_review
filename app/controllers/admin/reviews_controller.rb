@@ -7,7 +7,24 @@ class Admin::ReviewsController < ApplicationController
     else
       flash[:danger] = "Not reviewed..."
     end
-    redirect_to @review.dog
+    redirect_to [:admin, @review.dog]
+  end
+
+  def edit
+    @dog = @review.dog
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def update
+    if @review.update_attributes review_params
+      flash[:success] = "Successfully reviewed..."
+    else
+      flash[:danger] = "Not reviewed..."
+    end
+    redirect_to [:admin, @review.dog]
   end
 
   def destroy
@@ -17,7 +34,7 @@ class Admin::ReviewsController < ApplicationController
     else
       flash[:danger] = "Not destroyed..."
     end
-    redirect_to dog
+    redirect_to [:admin, dog]
   end
 
   private

@@ -10,6 +10,14 @@ class ReviewsController < ApplicationController
     redirect_to @review.dog
   end
 
+  def edit
+    @dog = @review.dog
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
   def update
     if @review.update_attributes review_params
       flash[:success] = "Successfully reviewed..."
