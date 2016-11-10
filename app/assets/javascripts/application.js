@@ -16,7 +16,7 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-$(document).on("turbolinks:load", function() {
+$(document).on("turbolinks:load ajaxComplete", function() {
   setTimeout(function(){
     $('.alert').slideUp(500);
   }, 2000);
@@ -79,6 +79,10 @@ $(document).on("turbolinks:load", function() {
     $("#rate-4").before().addClass("color-hover");
     $("#rate-5").before().addClass("color-hover");
     $("#review_rate").val(5);
+  });
+
+  $(".edit-review").click(function() {
+    $(window).scrollTop($('.form-review').offset().top);
   });
 });
 
