@@ -9,7 +9,7 @@ class Dog < ApplicationRecord
   validates :height, presence: true
   validates :avg_life_expectancy, presence: true
 
-  scope :search_dog, -> search_name {where "name LIKE :search_name",
+  scope :search_dog, -> search_name {where "name ILIKE :search_name",
     search_name: "%#{search_name}%"}
   scope :search_weight, ->search_name{where "weight = :search_name",
     search_name: "#{search_name}"}
