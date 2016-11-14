@@ -4,6 +4,16 @@
       <div class="image-dog text-center">
         <%= set_image_dog dog %>
       </div>
+      <% if user_signed_in? %>
+        <div id="favorite-<%= dog.id %>">
+          <% if check_favorite dog %>
+            <%= controller_name == dog ? render("unfavorite", dog: dog) :
+              render("dogs/unfavorite", dog: dog) %>
+          <% else %>
+            <%= render "favorite", dog: dog %>
+          <% end %>
+        </div>
+      <% end %>
       <h2><%= dog.name %></h2>
       <div class="content-dog">
         <div class="rate"></div>

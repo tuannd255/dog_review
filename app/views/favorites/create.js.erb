@@ -1,0 +1,2 @@
+$("#favorite-<%= @dog.id %>").html("<%= j render "dogs/unfavorite", dog: @dog %>");
+$(".flash").html("<%= j render "layouts/flash" %>");

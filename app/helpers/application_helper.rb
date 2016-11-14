@@ -30,4 +30,8 @@ module ApplicationHelper
     link_to name, "#", class: "add_fields add",
       data: {id: id, fields: fields.gsub("\n", "")}
   end
+
+  def check_favorite dog
+    Favorite.find_by user: current_user, dog: dog
+  end
 end

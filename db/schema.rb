@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161018042911) do
+ActiveRecord::Schema.define(version: 20161114144038) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -34,13 +34,22 @@ ActiveRecord::Schema.define(version: 20161018042911) do
     t.index ["user_id"], name: "index_dogs_on_user_id", using: :btree
   end
 
+  create_table "favorites", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "dog_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dog_id"], name: "index_favorites_on_dog_id", using: :btree
+    t.index ["user_id"], name: "index_favorites_on_user_id", using: :btree
+  end
+
   create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "content"
+    t.text     "content",    limit: 65535
     t.integer  "rate"
     t.integer  "dog_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.index ["dog_id"], name: "index_reviews_on_dog_id", using: :btree
     t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
   end
@@ -69,6 +78,8 @@ ActiveRecord::Schema.define(version: 20161018042911) do
 
   add_foreign_key "dogs", "categories"
   add_foreign_key "dogs", "users"
+  add_foreign_key "favorites", "dogs"
+  add_foreign_key "favorites", "users"
   add_foreign_key "reviews", "dogs"
   add_foreign_key "reviews", "users"
 end

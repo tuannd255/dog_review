@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
   has_many :reviews, dependent: :destroy
   has_many :dogs, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   class << self
     def from_omniauth auth

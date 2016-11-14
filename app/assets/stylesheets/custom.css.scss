@@ -357,15 +357,23 @@ footer ul {
 footer ul li {
   margin-left: 15px;
 }
-.alert-alert {
+.alert-alert, .alert-danger {
   background-color: #f2dede;
   border-color: #ebccd1;
   color: #a94442;
+  position: fixed;
+  width: 200px;
+  right: 0px;
+  opacity: 0.5;
 }
-.alert-notice {
+.alert-notice, .alert-success {
   background-color: #dff0d8;
   border-color: #d6e9c6;
   color: #3c763d;
+  position: fixed;
+  width: 200px;
+  right: 0px;
+  opacity: 0.5;
 }
 #error_explanation {
   color: red;
@@ -426,6 +434,20 @@ footer ul li {
   }
   .dog-view {
     padding-top: 30px;
+    position: relative;
+
+    .unfavorite, .favorite {
+      position: absolute;
+      top: 35px;
+      font-size: 25px;
+      right: 10px;
+    }
+    .favorite {
+      opacity: 0.5;
+    }
+    .star-favorite {
+      color: #ffbf00;
+    }
   }
 
   .user-field select {
@@ -461,6 +483,10 @@ footer ul li {
       color: #23a9e7;
     }
     .color-red {
+      color: red;
+    }
+    .star-favorite {
+      opacity: 0.6;
       color: red;
     }
   }
