@@ -1,25 +1,29 @@
 <% provide :title, t("dogs.title") %>
 <div id="dogs">
   <div class="row a-dog">
-    <div class="col-md-10 col-md-offset-1">
+    <div class="col-md-2">
       <h3><%= link_to t("categories.new"), new_dog_path,
         class: "btn btn-success" %></h3>
+      <h3><%= link_to "Favorites", favorites_path %></h3>
       <div class="search-form">
         <%= form_tag dogs_path, remote: true, method: :get do %>
-          <%= label_tag :search_dog %>
           <div class="fl-div-dog row" id="search-dog-form">
-            <div class="col-sm-4"><%= select_tag :search_dog,
-              options_for_select(@filter_dogs), class: "form-control" %>
+            <div class="col-sm-10" style="padding-top: 10px;">
+              <%= select_tag :search_dog,
+                options_for_select(@filter_dogs), class: "form-control" %>
             </div>
-            <div class="col-sm-4"><%= text_field_tag :search %></div>
-            <div class="col-sm-4"><%= submit_tag :Search,
-              class: "btn btn-primary" %>
+            <div class="col-sm-10" style="padding-top: 10px;">
+              <%= text_field_tag :search %></div>
+            <div class="col-sm-10" style="padding-top: 10px;">
+              <%= submit_tag :Search, class: "btn btn-primary" %>
             </div>
           </div>
         <% end %>
       </div>
+    </div>
+    <div class="col-md-10">
       <div class="all-dog"><%= render @dogs if @dogs %></div>
     </div>
   </div>
-  <%= paginate @dogs %>
+  <div class="text-center"><%= paginate @dogs %></div>
 </div>

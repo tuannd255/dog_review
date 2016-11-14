@@ -14,6 +14,7 @@ class Ability
       can [:edit, :update, :read], User do |other_user|
         user == other_user
       end
+      can [:create, :destroy, :read], Favorite
     end
   end
 end

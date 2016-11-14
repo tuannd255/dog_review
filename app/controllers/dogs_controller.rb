@@ -6,7 +6,7 @@ class DogsController < ApplicationController
 
   def index
     @filter_dogs = ["name", "weight", "height"]
-    @dogs = if params[:commit].present?
+    @dogs = if params[:commit].present? && !params[:search].blank?
       Dog.search params[:search_dog], params[:search]
     else
       @dogs

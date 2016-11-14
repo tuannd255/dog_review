@@ -1,31 +1,31 @@
 <div id="sidebar-wrapper">
-    <ul class="sidebar-nav">
-      <li class="sidebar-brand">
-        <%= link_to t("home.name"), admin_root_path %>
-      </li>
-      <li class="panel-group hvr-bounce-to-left">
-        <%= link_to admin_root_path do %>
-          <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-          <%= t "home.name" %>
-        <% end %>
-      </li>
-      <li class="panel-group hvr-bounce-to-left">
-        <%= link_to admin_categories_path do %>
-          <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-          <%= t "categories.title" %>
-        <% end %>
-      </li>
-      <li class="panel-group hvr-bounce-to-left">
-        <%= link_to admin_dogs_path do %>
-          <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
-          <%= t "dogs.title" %>
-        <% end %>
-      </li>
-      <li class="panel-group hvr-bounce-to-left">
-        <%= link_to admin_users_path do %>
-          <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-          <%= t "users.title" %>
-        <% end %>
-      </li>
-    </ul>
-  </div>
+  <ul class="sidebar-nav">
+    <li class="sidebar-brand">
+      <%= link_to t("home.name"), admin_root_path %>
+    </li>
+    <li class="panel-group hvr-bounce-to-left">
+      <%= link_to admin_root_path do %>
+        <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+        <%= t "home.name" %>
+      <% end %>
+    </li>
+    <li class="panel-group hvr-bounce-to-left">
+      <%= link_to admin_categories_path do %>
+        <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+        <%= t "categories.title" %>
+      <% end %>
+    </li>
+    <li class="panel-group hvr-bounce-to-left">
+      <%= link_to admin_dogs_path do %>
+        <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+        <%= t "dogs.title" %>
+      <% end %>
+    </li>
+    <li class="panel-group hvr-bounce-to-left">
+      <%= link_to admin_users_path do %>
+        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+        <%= t "users.title" %>
+      <% end %>
+    </li>
+  </ul>
+</div>

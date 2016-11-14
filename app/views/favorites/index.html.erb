@@ -1,0 +1,20 @@
+<% provide :title, t("dogs.title") %>
+<div id="dogs">
+  <div class="row a-dog">
+    <div class="col-md-2">
+      <h3><%= link_to t("categories.new"), new_dog_path,
+        class: "btn btn-success" %></h3>
+    </div>
+    <div class="col-md-10">
+      <div class="all-dog">
+        <% if @favorites.any? %>
+          <% @favorites.each do |favorite| %>
+            <div id="favorite-dog-<%= favorite.dog_id %>">
+              <%= render "dogs/dog", dog: favorite.dog %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

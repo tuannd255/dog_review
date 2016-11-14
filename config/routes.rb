@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   resources :users
   resources :dogs
   resources :reviews
+  resources :favorites, only: [:create, :destroy, :index]
 end

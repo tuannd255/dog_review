@@ -4,6 +4,11 @@
   </div>
   <div class="col-md-9">
     <p>
+      <div class="pull-right">
+        <% review.rate.times do |n| %>
+          <span class="glyphicon glyphicon-star star color-hover"></span>
+        <% end %>
+      </div>
       <%= link_to review.user_name, review.user %>
       <%= time_ago_in_words review.created_at %>
     </p>
