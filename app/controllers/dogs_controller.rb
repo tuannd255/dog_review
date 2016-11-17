@@ -5,9 +5,9 @@ class DogsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @filter_dogs = ["name", "weight", "height"]
+    @filter_dogs = {"name" => 0, "weight" => 1, "height" => 2}.map {|a, v| [a, a]}
     @dogs = if params[:commit].present? && !params[:search].blank?
-      Dog.search params[:search_dog], params[:search]
+      Dog.search params[:search_dog], params[:search], params[:search_2]
     else
       @dogs
     end

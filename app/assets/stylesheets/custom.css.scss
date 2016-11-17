@@ -419,7 +419,7 @@ footer ul li {
   max-width: 310px;
 }
 #dogs, #categories {
-  #search {
+  #search, #search_2 {
     @extend .form-control;
   }
   .form-dog {
@@ -479,6 +479,10 @@ footer ul li {
     }
 
     .color-hover {
+      content: "\2605";
+      color: #23a9e7;
+    }
+    .color-hover- {
       content: "\2605";
       color: #23a9e7;
     }

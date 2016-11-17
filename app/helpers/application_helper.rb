@@ -34,4 +34,16 @@ module ApplicationHelper
   def check_favorite dog
     Favorite.find_by user: current_user, dog: dog
   end
+
+  def set_color_height dog, dogs
+    dog.height == dogs.max {|a, b| a[:height] <=> b[:height] }[:height] ? "text-primary" : "text-danger"
+  end
+
+  def set_color_weight dog, dogs
+    dog.weight == dogs.max {|a, b| a[:weight] <=> b[:weight] }[:weight] ? "text-primary" : "text-danger"
+  end
+
+  def set_color_avg dog, dogs
+    dog.avg_life_expectancy == dogs.max {|a, b| a[:avg_life_expectancy] <=> b[:avg_life_expectancy] }[:avg_life_expectancy] ? "text-primary" : "text-danger"
+  end
 end

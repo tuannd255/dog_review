@@ -81,9 +81,68 @@ $(document).on("turbolinks:load ajaxComplete", function() {
     $("#review_rate").val(5);
   });
 
+  $("#rate-1").hover(function(){
+    $("#rate-1").before().toggleClass("color-hover-");
+  });
+  $("#rate-2").hover(function(){
+    $("#rate-2").before().toggleClass("color-hover-");
+    $("#rate-1").before().toggleClass("color-hover-");
+  });
+  $("#rate-3").hover(function(){
+    $("#rate-2").before().toggleClass("color-hover-");
+    $("#rate-1").before().toggleClass("color-hover-");
+    $("#rate-3").before().toggleClass("color-hover-");
+  });
+  $("#rate-4").hover(function(){
+    $("#rate-2").before().toggleClass("color-hover-");
+    $("#rate-1").before().toggleClass("color-hover-");
+    $("#rate-3").before().toggleClass("color-hover-");
+    $("#rate-4").before().toggleClass("color-hover-");
+  });
+  $("#rate-5").hover(function(){
+    $("#rate-2").before().toggleClass("color-hover-");
+    $("#rate-1").before().toggleClass("color-hover-");
+    $("#rate-3").before().toggleClass("color-hover-");
+    $("#rate-4").before().toggleClass("color-hover-");
+    $("#rate-5").before().toggleClass("color-hover-");
+  });
+
   $(".edit-review").click(function() {
     $(window).scrollTop($('.form-review').offset().top);
   });
+
+  if ($('.compare').length > 0) {
+    $('.compare_now').click(function(){
+      var a = $('.compare').children().length;
+      if (a == 1) {
+        alert("Give 2 dog in compare");
+      } else if (a > 3) {
+        alert("Give max 3 dog in compare");
+      } else {
+        link = "/compares?";
+        for (i = 0; i < a; ++i) {
+          link = link + "dog_" + i + "=" + $($('.compare').children()[i]).data('id');
+          if (i < a - 1) {
+            link = link + "&";
+          }
+        };
+        document.location.href = link;
+      }
+    });
+  };
 });
+function change_select(){
+  var e = document.getElementById("search_dog");
+  var select_option = e.options[e.selectedIndex].value;
+
+  var e = document.getElementById("search_dog");
+  var select_option = e.options[e.selectedIndex].text;
+  if (select_option == "height" || select_option == "weight") {
+    $('.search-2').show();
+  } else if (select_option == "name"){
+    $('.search-2').hide();
+  }
+};
+
 
 
