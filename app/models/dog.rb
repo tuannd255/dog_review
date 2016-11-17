@@ -12,19 +12,19 @@ class Dog < ApplicationRecord
 
   scope :search_dog, -> search_name {where "name ILIKE :search_name",
     search_name: "%#{search_name}%"}
-  scope :search_weight, ->search_name{where "weight = :search_name",
-    search_name: "#{search_name}"}
-  scope :search_height, ->search_name{where "height = :search_name",
-    search_name: "#{search_name}"}
+  scope :search_weight, ->value, value_2{where "weight >= ? and weight <= ?",
+    value, value_2}
+  scope :search_height, ->value, value_2{where "height >= ? and height <= ?",
+    value, value_2}
 
   class << self
-    def search search_name, value
+    def search search_name, value, value_2
       if search_name == "name"
         search_dog value
       elsif search_name == "weight"
-        search_weight value
+        search_weight value, value_2
       elsif search_name == "height"
-        search_height value
+        search_height value, value_2
       else
         all
       end

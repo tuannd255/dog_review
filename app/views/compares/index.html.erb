@@ -1,0 +1,32 @@
+<div style="padding-top: 30px;">
+  <% @dogs.each do |dog| %>
+    <div class="col-md-<%= @col %> text-center">
+      <div><%= set_image_dog dog %></div><hr>
+      <div class="<%= set_color_height dog, @dogs %>">
+        <b>Height:
+        </b>
+        <%= dog.height %>
+      </div><hr>
+      <div class="<%= set_color_weight dog, @dogs %>">
+        <b>Weight:
+        </b>
+        <%= dog.weight %>
+      </div><hr>
+      <div class="<%= set_color_avg dog, @dogs %>">
+        <b><%= t "dogs.avg_life_expectancy" %>:
+        </b>
+        <%= dog.avg_life_expectancy %> years
+      </div><hr>
+      <div>
+        <b><%= t "dogs.origin" %>:
+        </b>
+        <%= dog.origin %>
+      </div><hr>
+      <div>
+        <b>Description</b>
+        <br>
+        <%= dog.description %>
+      </div>
+    </div>
+  <% end %>
+</div>

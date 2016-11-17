@@ -4,21 +4,27 @@
     <div class="col-md-2">
       <h3><%= link_to t("categories.new"), new_dog_path,
         class: "btn btn-success" %></h3>
-      <h3><%= link_to "Favorites", favorites_path %></h3>
+      <h3><%= link_to "Favorites", favorites_path if user_signed_in? %></h3>
       <div class="search-form">
         <%= form_tag dogs_path, remote: true, method: :get do %>
           <div class="fl-div-dog row" id="search-dog-form">
             <div class="col-sm-10" style="padding-top: 10px;">
               <%= select_tag :search_dog,
-                options_for_select(@filter_dogs), class: "form-control" %>
+                options_for_select(@filter_dogs, selected: :search_dog), class: "form-control", onChange: "change_select()" %>
             </div>
             <div class="col-sm-10" style="padding-top: 10px;">
               <%= text_field_tag :search %></div>
+            <div class="col-sm-10 search-2" style="padding-top: 10px;" hidden>
+              <%= text_field_tag :search_2 %></div>
             <div class="col-sm-10" style="padding-top: 10px;">
               <%= submit_tag :Search, class: "btn btn-primary" %>
             </div>
           </div>
         <% end %>
+      </div>
+      <div class="compare"></div>
+      <div class="compare_now" hidden>
+        <%= link_to "Compare Now", "" %>
       </div>
     </div>
     <div class="col-md-10">

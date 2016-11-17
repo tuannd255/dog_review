@@ -44,5 +44,8 @@
         </div>
       </div>
     </div>
+    <div class="text-center compare-<%= dog.id %>">
+      <%= link_to "Add Compare", new_compare_path(dog_id: dog.id), remote: true %>
+    </div>
   <% end %>
 </div>
