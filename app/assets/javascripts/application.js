@@ -130,6 +130,10 @@ $(document).on("turbolinks:load ajaxComplete", function() {
       }
     });
   };
+
+  $('#category_id').change(function() {
+    document.location.href = "/dogs?category_id=" + $(this).val();
+  });
 });
 function change_select(){
   var e = document.getElementById("search_dog");
@@ -137,10 +141,15 @@ function change_select(){
 
   var e = document.getElementById("search_dog");
   var select_option = e.options[e.selectedIndex].text;
+  add_link = $('#search');
   if (select_option == "height" || select_option == "weight") {
-    $('.search-2').show();
+    $('.search-2').removeClass('hidden');
+    $('.show-from').removeClass('hidden');
+    add_link.attr("placeholder", "From");
   } else if (select_option == "name"){
-    $('.search-2').hide();
+    $('.search-2').addClass('hidden');
+    $('.show-from').addClass('hidden');
+    add_link.attr("placeholder", "Name");
   }
 };
 

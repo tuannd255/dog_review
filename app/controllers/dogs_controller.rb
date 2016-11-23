@@ -1,17 +1,18 @@
 class DogsController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource except: :index
   before_action :load_categories, only: [:index, :new, :edit]
   before_action :load_data, only: :show
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @filter_dogs = {"name" => 0, "weight" => 1, "height" => 2}.map {|a, v| [a, a]}
     @dogs = if params[:commit].present? && !params[:search].blank?
       Dog.search params[:search_dog], params[:search], params[:search_2]
+    elsif params[:category_id]
+      Category.find_by(id: params[:category_id]).dogs
     else
-      @dogs
+      Category.first.dogs
     end
-    @dogs = @dogs.page params[:page]
+    @dogs = @dogs.order(created_at: :desc).page params[:page]
     respond_to do |format|
       format.html
       format.js
