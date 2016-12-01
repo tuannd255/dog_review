@@ -3,7 +3,14 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!
 
   def create
+    rate = 0
     if @review.save
+      @review.dog.reviews.each do |review|
+        rate += review.rate
+      end
+      rate_avg = rate / @review.dog.reviews.size
+      rate_avg = (rate_avg*2).ceil.to_f / 2
+      @review.dog.update_attributes rate: rate_avg
       flash[:success] = "Successfully reviewed..."
     else
       flash[:danger] = "Not reviewed..."
@@ -20,7 +27,14 @@ class ReviewsController < ApplicationController
   end
 
   def update
+    rate = 0
     if @review.update_attributes review_params
+      @review.dog.reviews.each do |review|
+        rate += review.rate
+      end
+      rate_avg = rate / @review.dog.reviews.size
+      rate_avg = (rate_avg*2).ceil.to_f / 2
+      @review.dog.update_attributes rate: rate_avg
       flash[:success] = "Successfully reviewed..."
     else
       flash[:danger] = "Not reviewed..."

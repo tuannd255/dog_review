@@ -1,20 +1,30 @@
 <% provide :title, t("dogs.title") %>
 <div id="dogs">
   <div class="row a-dog">
-    <div class="col-md-2">
+    <div class="col-md-2 col-xs-2">
       <h3><%= link_to t("categories.new"), new_dog_path,
         class: "btn btn-success" %></h3>
       <h3><%= link_to "Favorites", favorites_path if user_signed_in? %></h3>
       <label>Select Categories</label>
-      <%= select_tag :category_id, options_for_select(@categories),
-        class: "form-control" %>
+      <div>
+        <% Category.all.each do |category| %>
+          <div class="check-box-category">
+            <label>
+              <%= radio_button_tag :category_id, category.id %>
+              <%= category.name %>
+            </label>
+          </div>
+        <% end %>
+      </div>
       <div class="compare"></div>
       <div class="compare_now" hidden>
         <%= link_to "Compare Now", "" %>
       </div>
     </div>
-    <div class="col-md-10">
-      <div class="all-dog row"><%= render @dogs if @dogs %></div>
+    <div class="col-md-10 col-xs-10">
+      <div class="all-dog row">
+        <%= render @dogs if @dogs %>
+      </div>
     </div>
   </div>
   <div class="text-center"><%= paginate @dogs %></div>

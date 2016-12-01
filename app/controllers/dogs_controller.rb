@@ -5,17 +5,27 @@ class DogsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @dogs = if params[:commit].present? && !params[:search].blank?
-      Dog.search params[:search_dog], params[:search], params[:search_2]
-    elsif params[:category_id]
-      Category.find_by(id: params[:category_id]).dogs
+    if params[:category_id]
+      @dogs = Category.find_by(id: params[:category_id]).dogs.order(rate: :desc)
+        .page params[:page]
+      render "index.js.erb"
     else
-      Category.first.dogs
-    end
-    @dogs = @dogs.order(created_at: :desc).page params[:page]
-    respond_to do |format|
-      format.html
-      format.js
+      if params[:current_controller] == "dogs" && params[:current_action] == "index"
+        @dogs = if params[:commit].present? && !params[:search].blank?
+          Dog.search params[:search_dog], params[:search], params[:search_2]
+        else
+          Category.first.dogs
+        end
+        @dogs = @dogs.order(rate: :desc).page params[:page]
+        respond_to do |format|
+          format.html
+          format.js
+        end
+      else
+        @dogs = Dog.search params[:search_dog], params[:search], params[:search_2]
+        @dogs = @dogs.order(rate: :desc).page params[:page]
+        render template: "dogs/index.html"
+      end
     end
   end
 
@@ -65,7 +75,7 @@ class DogsController < ApplicationController
   end
 
   def load_categories
-    @categories = Category.all.collect {|category| [category.name, category.id]}
+    @categories = Category.all.collect {|a| [a.name, a.id]}
   end
 
   def load_data

@@ -110,6 +110,17 @@ $(document).on("turbolinks:load ajaxComplete", function() {
   $(".edit-review").click(function() {
     $(window).scrollTop($('.form-review').offset().top);
   });
+});
+$(document).on("turbolinks:load", function() {
+
+  $('.check-box-category').change(function() {
+    $.ajax({
+      type: 'GET',
+      data: {category_id: $('label input', this).val()},
+      url: '/dogs'
+    });
+  });
+  $('#category_id_1').prop('checked', true);
 
   if ($('.compare').length > 0) {
     $('.compare_now').click(function(){
@@ -130,11 +141,22 @@ $(document).on("turbolinks:load ajaxComplete", function() {
       }
     });
   };
-
-  $('#category_id').change(function() {
-    document.location.href = "/dogs?category_id=" + $(this).val();
-  });
+  current_controller = $('#current_controller').val();
+  current_action = $('#current_action').val();
+  if ((current_controller == 'dogs' && current_action == 'index') != true) {
+    $('.btn-submit').click(function() {
+      search = $('#search').val();
+      search2 = $('#search_2').val();
+      commit = $(this).attr("name");
+      search_dog = $('#search_dog').val();
+      link = '/dogs?search=' + search + '&search_2=' + search2 +
+        'commit=Search&' + 'current_controller=' + current_controller +
+        '&current_action=' + current_action + '&search_dog=' + search_dog
+      document.location.href = link
+    });
+  };
 });
+
 function change_select(){
   var e = document.getElementById("search_dog");
   var select_option = e.options[e.selectedIndex].value;

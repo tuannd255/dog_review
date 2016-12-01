@@ -33,6 +33,13 @@
                     <%= t "dogs.year" %>
                   </span>
                 </div>
+
+                <div style="display: inline-flex; margin-left: 30%;">
+                  <% if @dog.rate %>
+                    <label>Rate</label>: <span class="rating-static
+                      star-<%= @dog.rate * 10 %>"></span>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>
