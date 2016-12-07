@@ -8,13 +8,17 @@ class Ability
     else
       if namespace == "admin"
         cannot :manage, :all
+      else
+        can [:read, :create, :destroy], Dog
+        can [:update], Dog do |other_dog|
+          other_dog.user == user
+        end
+        can :manage, Review
+        can [:edit, :update, :read], User do |other_user|
+          user == other_user
+        end
+        can [:create, :destroy, :read], Favorite
       end
-      can [:read, :create, :destroy, :update], Dog
-      can :manage, Review
-      can [:edit, :update, :read], User do |other_user|
-        user == other_user
-      end
-      can [:create, :destroy, :read], Favorite
     end
   end
 end

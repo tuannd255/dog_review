@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161114144038) do
+ActiveRecord::Schema.define(version: 20161124035747) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -28,8 +28,9 @@ ActiveRecord::Schema.define(version: 20161114144038) do
     t.text     "description",         limit: 65535
     t.integer  "category_id"
     t.integer  "user_id"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
+    t.integer  "rate",                              default: 0
     t.index ["category_id"], name: "index_dogs_on_category_id", using: :btree
     t.index ["user_id"], name: "index_dogs_on_user_id", using: :btree
   end

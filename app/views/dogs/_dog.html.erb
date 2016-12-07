@@ -10,7 +10,7 @@
             <%= controller_name == dog ? render("unfavorite", dog: dog) :
               render("dogs/unfavorite", dog: dog) %>
           <% else %>
-            <%= render "favorite", dog: dog %>
+            <%= render "favorite", dog: dog unless controller_name == "users" %>
           <% end %>
         </div>
       <% end %>
@@ -40,6 +40,12 @@
               <%= dog.avg_life_expectancy %>
               <%= t "dogs.year" %>
             </span>
+          </div>
+          <div style="display: inline-flex; margin-left: 30%;">
+            <% if dog.rate %>
+              <label>Rate</label>: <span class="rating-static
+                star-<%= dog.rate * 10 %>"></span>
+            <% end %>
           </div>
         </div>
       </div>

@@ -4,17 +4,18 @@
       <%= link_to t(:title), root_path, id: "logo" %>
       <nav>
         <ul class="nav navbar-nav navbar-right">
-          <% if controller_name == "dogs" && params[:action] == "index" %>
-            <li><%= text_field_tag :search, "", placeholder: "Name" %></li>
-            <li class="search-2 hidden"><%= text_field_tag :search_2, "",
-              placeholder: "To" %></li>
-            <li>
-              <%= select_tag :search_dog,
-                options_for_select(@filter_dogs), class: "form-control", onChange: "change_select()", style: "margin-top: 8px" %>
-            </li>
-            <li><%= submit_tag :Search, class: "btn btn-primary",
-              style: "margin-top: 8px" %></li>
-          <% end %>
+          <li><%= text_field_tag :search, "", placeholder: "Name" %></li>
+          <li class="search-2 hidden"><%= text_field_tag :search_2, "",
+            placeholder: "To" %></li>
+          <li>
+            <%= select_tag :search_dog,
+              options_for_select(@filter_dogs), class: "form-control", onChange: "change_select()", style: "margin-top: 8px" %>
+            <%= hidden_field_tag :current_controller, "",
+              value: controller_name %>
+            <%= hidden_field_tag :current_action, "", value: params[:action] %>
+          </li>
+          <li><%= submit_tag :Search, class: "btn btn-primary btn-submit",
+            style: "margin-top: 8px" %></li>
           <% if user_signed_in? %>
             <% if current_user.is_admin? %>
             <% else %>
@@ -25,6 +26,9 @@
                 <%= set_avatar_user_header current_user %><b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
+                <li>
+                  <%= link_to "Profile", current_user %>
+                </li>
                 <li>
                   <%= link_to t("users.setting"),
                     edit_user_path(current_user) %>
