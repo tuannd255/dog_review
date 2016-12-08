@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require moment
+//= require bootstrap-datetimepicker
 //= require bootstrap-sprockets
 //= require_tree .
 
@@ -113,6 +115,16 @@ $(document).on("turbolinks:load ajaxComplete", function() {
 });
 $(document).on("turbolinks:load", function() {
 
+  if ($('#events').length > 0) {
+    $('.event').click(function(){
+      $.ajax({
+        type: 'GET',
+        data: {event_id: $(this).data('id')},
+        url: '/events'
+      });
+    });
+  };
+
   $('.check-box-category').change(function() {
     $.ajax({
       type: 'GET',
@@ -155,6 +167,10 @@ $(document).on("turbolinks:load", function() {
       document.location.href = link
     });
   };
+
+  $('.datepicker').datetimepicker({
+    format: 'h:m DD/MM/YYYY'
+  });
 });
 
 function change_select(){
