@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161207152500) do
+ActiveRecord::Schema.define(version: 20161214154546) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -43,6 +43,11 @@ ActiveRecord::Schema.define(version: 20161207152500) do
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+<<<<<<< Updated upstream
+=======
+    t.datetime "end_time"
+    t.string   "image"
+>>>>>>> Stashed changes
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
 
@@ -56,13 +61,13 @@ ActiveRecord::Schema.define(version: 20161207152500) do
   end
 
   create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text     "content",    limit: 65535
+    t.text     "content",         limit: 65535
     t.integer  "rate"
-    t.integer  "dog_id"
     t.integer  "user_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.index ["dog_id"], name: "index_reviews_on_dog_id", using: :btree
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "targetable_id"
+    t.string   "targetable_type"
     t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
   end
 
@@ -103,7 +108,6 @@ ActiveRecord::Schema.define(version: 20161207152500) do
   add_foreign_key "events", "users"
   add_foreign_key "favorites", "dogs"
   add_foreign_key "favorites", "users"
-  add_foreign_key "reviews", "dogs"
   add_foreign_key "reviews", "users"
   add_foreign_key "user_events", "events"
   add_foreign_key "user_events", "users"

@@ -6,7 +6,13 @@ module ApplicationHelper
   end
 
   def set_image_dog dog, width = "100%", height = "200"
-    cl_image_tag dog.image_url ? dog.image_url : "http://imageshack.com/a/img922/7474/6SiM0b.gif", width: width, height: height, class: "image"
+    cl_image_tag dog.image_url ? dog.image_url : "http://imageshack.com/a/img922/7474/6SiM0b.gif",
+      width: width, height: height, class: "image"
+  end
+
+  def set_image_event event, width = "75%"
+    cl_image_tag event.image_url ? event.image_url : "http://imageshack.com/a/img922/7474/6SiM0b.gif",
+      width: width, class: "image-event"
   end
 
   def set_avatar_user user, class_name = "img-circle"
@@ -45,5 +51,9 @@ module ApplicationHelper
 
   def set_color_avg dog, dogs
     dog.avg_life_expectancy == dogs.max {|a, b| a[:avg_life_expectancy] <=> b[:avg_life_expectancy] }[:avg_life_expectancy] ? "text-primary" : "text-danger"
+  end
+
+  def load_user_event event
+    UserEvent.find_by user: current_user, event: event
   end
 end

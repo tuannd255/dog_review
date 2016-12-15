@@ -6,13 +6,23 @@
         class: "btn btn-success" %></h3>
       <h3><%= link_to "Favorites", favorites_path if user_signed_in? %></h3>
       <label>Select Categories</label>
-      <div>
+      <div style="max-height: 200px; overflow: auto">
         <% Category.all.each do |category| %>
-          <div class="check-box-category">
+          <div class="check-box-category" title="<%= category.name %>">
             <label>
               <%= radio_button_tag :category_id, category.id %>
               <%= category.name %>
             </label>
+          </div>
+        <% end %>
+      </div>
+      <hr>
+      <b>Event</b>
+      <div style="max-height: 200px; overflow: auto">
+        <% Event.all.each do |event| %>
+          <div>
+            <%= link_to event.name, events_path(event: event.id),
+              class: "event-index-dog", title: event.name %>
           </div>
         <% end %>
       </div>

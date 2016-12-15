@@ -16,7 +16,8 @@
     <%= f.text_area :content, placeholder: t("reviews.content"),
       class: "form-control height-text-area" %>
   </div>
-  <%= f.hidden_field :dog_id, value: @dog.id %>
+  <%= f.hidden_field :targetable_id, value: @dog.id %>
+  <%= f.hidden_field :targetable_type, value: Dog.name %>
   <%= f.hidden_field :user_id, value: current_user.id if current_user %>
   <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>

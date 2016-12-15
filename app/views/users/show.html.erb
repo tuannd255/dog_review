@@ -1,8 +1,13 @@
 <% provide :title, @user.name %>
 <div id="users" style="margin-top: 30px;">
   <div class="row">
-    <div class="event col-md-8 col-md-offset-2">
-      <% Event.where(user: current_user).each do |event| %>
+    <div class="event list-event col-md-8 col-md-offset-2">
+      <div class="row header">
+        <div class="col-md-4"><b>Events</b></div>
+        <div class="col-md-4"><b>Status</b></div>
+        <div class="col-md-4"><b>Action</b></div>
+      </div>
+      <% Event.event_of_user(current_user.id).each do |event| %>
         <%= render "event", event: event %>
       <% end %>
     </div>

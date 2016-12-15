@@ -1,1 +1,5 @@
-$(".form-review").html("<%= j render "dogs/form_review" %>");
+<% if @review.targetable_type == Dog.name %>
+  $(".form-review").html("<%= j render "dogs/form_review" %>");
+<% else %>
+  $(".form-review").html("<%= j render "events/form_review" %>");
+<% end %>

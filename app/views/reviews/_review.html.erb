@@ -1,14 +1,16 @@
-<div class="row reviews">
+<div class="row reviews" id="review-<%= review.id %>">
   <div class="col-md-1">
     <%= set_avatar_user review.user %>
   </div>
   <div class="col-md-9">
     <p>
-      <div class="pull-right">
-        <% review.rate.times do |n| %>
-          <span class="glyphicon glyphicon-star star color-hover"></span>
-        <% end %>
-      </div>
+      <% if review.targetable_type == Dog.name %>
+        <div class="pull-right">
+          <% review.rate.times do |n| %>
+            <span class="glyphicon glyphicon-star star color-hover"></span>
+          <% end %>
+        </div>
+      <% end %>
       <%= link_to review.user_name, review.user %>
       <%= time_ago_in_words review.created_at %>
     </p>
@@ -20,7 +22,7 @@
       data: {id: "#{review.id}"}, remote: true if
       current_user?(review.user) %>
     <%= link_to t("categories.delete"), review_path(review),
-      method: :delete, class: "color-red",
+      method: :delete, remote: true, class: "color-red",
       data: {confirm: "Are you sure?"} if current_user?(review.user) %>
   </div>
 </div>

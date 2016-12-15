@@ -1,11 +1,18 @@
 <div id="event-<%= event.id %>" class="event"
   style="list-style: none; margin-bottom: 5px;">
   <div class="row">
-    <div class="col-md-4"><%= event.name %></div>
     <div class="col-md-4">
-      <%= link_to "Edit", edit_event_path(event), class: "btn btn-xs btn-primary" %>
+      <%= link_to event.name, events_path(event: event.id) %>
+    </div>
+    <div class="col-md-4">
+      <%= load_user_event(event).status if load_user_event event %>
+    </div>
+    <div class="col-md-4">
+      <%= link_to "Edit", edit_event_path(event), class: "btn btn-xs btn-primary" if
+        current_user?(event.user) %>
       <%= link_to "Delete", event_path(event), method: :delete,
-        data: {confirm: "Arey you sure? "}, class: "btn btn-xs btn-danger" %>
+        data: {confirm: "Arey you sure? "}, class: "btn btn-xs btn-danger" if
+        current_user?(event.user) %>
     </div>
   </div>
 </div>

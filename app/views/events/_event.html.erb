@@ -1,1 +1,22 @@
-<p data-id="<%= event.id %>" class="event"><%= event.name %></p>
+<div data-id="<%= event.id %>" class="event" id="event-<%= event.id %>">
+  <%= event.name %>
+  <ul class="list-status hidden text-left">
+    <% if load_user_event event %>
+      <% UserEvent.statuses.each do |key, value| %>
+        <li style="list-style: none; margin-left: 30%;">
+          <%= link_to key, user_event_path(load_user_event(event), status: key),
+            data: {method: :patch, confirm: "Are you sure?"},
+            class: "btn #{key} btn-xs action-user-event" %>
+        </li>
+      <% end %>
+    <% else %>
+      <% UserEvent.statuses.each do |key, value| %>
+        <li style="list-style: none; margin-left: 30%;">
+          <%= link_to key, user_events_path(event_id: event.id, status: key),
+            data: {method: :post, confirm: "Are you sure?"},
+            class: "btn #{key} btn-xs action-user-event" %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

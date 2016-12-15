@@ -5,21 +5,36 @@ class ReviewsController < ApplicationController
   def create
     rate = 0
     if @review.save
-      @review.dog.reviews.each do |review|
-        rate += review.rate
+      if @review.targetable_type == Dog.name
+        @review.targetable.reviews.each do |review|
+          rate += review.rate
+        end
+        rate_avg = rate / @review.targetable.reviews.size
+        rate_avg = (rate_avg*2).ceil.to_f / 2
+        @review.targetable.update_attributes rate: rate_avg
       end
-      rate_avg = rate / @review.dog.reviews.size
-      rate_avg = (rate_avg*2).ceil.to_f / 2
-      @review.dog.update_attributes rate: rate_avg
-      flash[:success] = "Successfully reviewed..."
+      flash.now[:success] = "Successfully reviewed..."
     else
-      flash[:danger] = "Not reviewed..."
+      flash.now[:danger] = "Not reviewed..."
     end
-    redirect_to @review.dog
+    if @review.targetable_type == Dog.name
+      redirect_to @review.targetable
+    else
+      @events = Event.all
+      @event = @review.targetable
+      respond_to do |format|
+        format.html
+        format.js
+      end
+    end
   end
 
   def edit
-    @dog = @review.dog
+    if @review.targetable_type == Dog.name
+      @dog = @review.targetable
+    else
+      @event = @review.targetable
+    end
     respond_to do |format|
       format.html
       format.js
@@ -29,31 +44,60 @@ class ReviewsController < ApplicationController
   def update
     rate = 0
     if @review.update_attributes review_params
-      @review.dog.reviews.each do |review|
-        rate += review.rate
+      if @review.targetable_type == Dog.name
+        @review.targetable.reviews.each do |review|
+          rate += review.rate
+        end
+        rate_avg = rate / @review.targetable.reviews.size
+        rate_avg = (rate_avg*2).ceil.to_f / 2
+        @review.targetable.update_attributes rate: rate_avg
       end
-      rate_avg = rate / @review.dog.reviews.size
-      rate_avg = (rate_avg*2).ceil.to_f / 2
-      @review.dog.update_attributes rate: rate_avg
-      flash[:success] = "Successfully reviewed..."
+      flash.now[:success] = "Successfully reviewed..."
     else
-      flash[:danger] = "Not reviewed..."
+      flash.now[:danger] = "Not reviewed..."
     end
-    redirect_to @review.dog
+    if @review.targetable_type == Dog.name
+      redirect_to @review.targetable
+    else
+      @events = Event.all
+      @event = @review.targetable
+      respond_to do |format|
+        format.html
+        format.js
+      end
+    end
   end
 
   def destroy
-    dog = @review.dog
+    targetable = @review.targetable
     if @review.destroy
-      flash[:success] = "Successfully destroyed..."
+      flash.now[:danger] = "Successfully destroyed..."
     else
-      flash[:danger] = "Not destroyed..."
+      flash.now[:danger] = "Not destroyed..."
     end
-    redirect_to dog
+    if targetable.class.name == Dog.name
+      @dog = targetable
+      rate = 0
+      targetable.reviews.each do |review|
+        rate += review.rate
+      end
+      rate_avg = rate / targetable.reviews.size
+      rate_avg = (rate_avg*2).ceil.to_f / 2
+      targetable.update_attributes rate: rate_avg
+    else
+      @events = Event.all
+      @event = targetable
+    end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   private
   def review_params
-    params.require(:review).permit :content, :rate, :dog_id, :user_id
+    params.require(:review).permit :content, :rate, :targetable_id, :user_id,
+      :targetable_type
   end
 end

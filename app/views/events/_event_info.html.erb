@@ -2,13 +2,32 @@
   <b>Owner: </b><%= @event.user.name %>
 </div>
 <div class="row event-info">
+  <div class="col-md-12 text-center"><%= set_image_event @event %></div>
   <div class="col-md-4">
-    <b>Time: </b><%= @event.start_time %>
+    <b>Start Time: </b><%= @event.start_time %>
   </div>
-  <div class="col-md-8">
+  <div class="col-md-4">
+    <b>End Time: </b><%= @event.start_time %>
+  </div>
+  <div class="col-md-12">
     <b>Location: </b><%= @event.location %>
   </div>
   <div class="col-md-12">
     <b>Description: </b><%= @event.description %>
   </div>
+  <% if load_user_event(@event) %>
+    <div class="col-md-12">
+      <b>You: </b><%= load_user_event(@event).status %>
+    </div>
+    <div class="col-md-12">
+      <%= social_share_button_tag(@event.name) %>
+    </div>
+  <% end %>
+</div>
+<hr>
+<div class="list-review">
+  <%= render @event.reviews.order created_at: :desc %>
+</div>
+<div class="form-review">
+  <%= render "form_review" %>
 </div>

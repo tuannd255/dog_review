@@ -21,6 +21,7 @@ class Ability
         can :update, Event do |other_event|
           other_event.user == user
         end
+        can [:create, :update], UserEvent
       end
     end
   end

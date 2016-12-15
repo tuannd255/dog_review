@@ -1,5 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "social-share-button";
+
 
 /* universal */
 html {
@@ -418,6 +420,9 @@ footer ul li {
 .image {
   max-width: 310px;
 }
+.image-event {
+  max-height: 350px;
+}
 #dogs, #categories {
   #search, #search_2 {
     @extend .form-control;
@@ -505,6 +510,17 @@ footer ul li {
     padding: 10px;
     color: #000;
   }
+  .event .event {
+    &:nth-child(odd) {
+      background-color: #eaffea;
+    }
+  }
+  .header {
+    background-color: #cecece;
+  }
+  .list-event {
+    border: 1px solid #cecece;
+  }
 }
 
 #search, #search_2 {
@@ -552,5 +568,52 @@ footer ul li {
     background-color: #cecece;
     cursor: pointer;
     margin-bottom: 10px;
+    position: relative;
+    width: 80%;
+
+    .list-status {
+      position: absolute;
+      top: 0;
+      right: -30px;
+      z-index: 100;
+    }
   }
+
+  .color-red {
+    color: red;
+  }
+
+  .active {
+    background-color: #1CAEC5;
+  }
+
+  .participation {
+    @extend .btn-primary;
+  }
+
+  .will_participate {
+    @extend .btn-info;
+  }
+
+  .no_participate {
+    @extend .btn-danger;
+  }
+
+  .action-user-event {
+    width: 100px;
+  }
+
+}
+.event-index-dog {
+  width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.social-share-button {
+  /*.ssb-icon {
+    background-size: $ $size;
+    height: $size;
+    width: $size;
+  }*/
 }

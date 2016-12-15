@@ -1,0 +1,13 @@
+<%= form_for @review, remote: true do |f| %>
+  <%= render "shared/error_messages", object: @review %>
+  <div class="form-group">
+    <div><%= f.label :content %></div>
+    <%= f.text_area :content, placeholder: "Please Input Comment",
+      class: "form-control height-text-area" %>
+  </div>
+  <%= f.hidden_field :targetable_id, value: @event.id %>
+  <%= f.hidden_field :targetable_type, value: Event.name %>
+  <%= f.hidden_field :rate, value: 0 %>
+  <%= f.hidden_field :user_id, value: current_user.id if current_user %>
+  <%= f.submit "Comment", class: "btn btn-primary" %>
+<% end %>

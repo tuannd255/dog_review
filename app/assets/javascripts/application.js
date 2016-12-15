@@ -16,6 +16,7 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require bootstrap-sprockets
+//= require social-share-button
 //= require_tree .
 
 $(document).on("turbolinks:load ajaxComplete", function() {
@@ -116,12 +117,24 @@ $(document).on("turbolinks:load ajaxComplete", function() {
 $(document).on("turbolinks:load", function() {
 
   if ($('#events').length > 0) {
+    var url_arr = document.location['search'].split('=');
+    if (url_arr.length > 1) {
+      $('#events #event-' + url_arr[1]).addClass('active');
+    } else {
+      $($('#events div.event')[0]).addClass('active');
+    }
     $('.event').click(function(){
+      $('#events div.event').removeClass('active');
+      $(this).addClass('active');
       $.ajax({
         type: 'GET',
         data: {event_id: $(this).data('id')},
         url: '/events'
       });
+    });
+
+    $('.event').hover(function() {
+      $('.list-status', this).toggleClass('hidden');
     });
   };
 
