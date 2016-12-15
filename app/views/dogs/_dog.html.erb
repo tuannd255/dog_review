@@ -1,16 +1,16 @@
-<div class="col-md-4">
+<div class="col-md-4" style="height: 420px;">
   <%= link_to dog do %>
     <div class="dog-view">
       <div class="image-dog text-center">
         <%= set_image_dog dog %>
       </div>
-      <% if user_signed_in? %>
+      <% if user_signed_in? && controller_name != "users" %>
         <div id="favorite-<%= dog.id %>">
           <% if check_favorite dog %>
             <%= controller_name == dog ? render("unfavorite", dog: dog) :
               render("dogs/unfavorite", dog: dog) %>
           <% else %>
-            <%= render "favorite", dog: dog unless controller_name == "users" %>
+            <%= render "favorite", dog: dog %>
           <% end %>
         </div>
       <% end %>

@@ -43,6 +43,8 @@ gem "listen"
 gem "omniauth-facebook"
 gem "cloudinary"
 gem "ransack", "1.7"
+gem "momentjs-rails"
+gem "bootstrap3-datetimepicker-rails"
 
 group :development, :test do
   gem "fabrication"

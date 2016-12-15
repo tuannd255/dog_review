@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161124035747) do
+ActiveRecord::Schema.define(version: 20161207152500) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -35,6 +35,17 @@ ActiveRecord::Schema.define(version: 20161124035747) do
     t.index ["user_id"], name: "index_dogs_on_user_id", using: :btree
   end
 
+  create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.datetime "start_time"
+    t.string   "location"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_events_on_user_id", using: :btree
+  end
+
   create_table "favorites", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.integer  "dog_id"
@@ -53,6 +64,16 @@ ActiveRecord::Schema.define(version: 20161124035747) do
     t.datetime "updated_at",               null: false
     t.index ["dog_id"], name: "index_reviews_on_dog_id", using: :btree
     t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
+  end
+
+  create_table "user_events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.integer  "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_user_events_on_event_id", using: :btree
+    t.index ["user_id"], name: "index_user_events_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -79,8 +100,11 @@ ActiveRecord::Schema.define(version: 20161124035747) do
 
   add_foreign_key "dogs", "categories"
   add_foreign_key "dogs", "users"
+  add_foreign_key "events", "users"
   add_foreign_key "favorites", "dogs"
   add_foreign_key "favorites", "users"
   add_foreign_key "reviews", "dogs"
   add_foreign_key "reviews", "users"
+  add_foreign_key "user_events", "events"
+  add_foreign_key "user_events", "users"
 end

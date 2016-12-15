@@ -1,5 +1,13 @@
 <% provide :title, @user.name %>
-<div id="users">
+<div id="users" style="margin-top: 30px;">
+  <div class="row">
+    <div class="event col-md-8 col-md-offset-2">
+      <% Event.where(user: current_user).each do |event| %>
+        <%= render "event", event: event %>
+      <% end %>
+    </div>
+  </div>
+  <hr>
   <div class="row table table-striped text-center">
     <div class="col-sm-4 col-xs-4">
       <%= @user.name %>

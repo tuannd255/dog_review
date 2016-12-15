@@ -101,6 +101,8 @@ GEM
       rails (>= 3.1)
     bootstrap-sass (3.2.0.0)
       sass (~> 3.2)
+    bootstrap3-datetimepicker-rails (4.17.42)
+      momentjs-rails (>= 2.8.1)
     breadcrumbs_on_rails (3.0.1)
     builder (3.2.2)
     bullet (5.4.2)
@@ -219,6 +221,8 @@ GEM
     mini_magick (4.5.1)
     mini_portile2 (2.1.0)
     minitest (5.9.1)
+    momentjs-rails (2.11.1)
+      railties (>= 3.1)
     multi_json (1.12.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -382,6 +386,7 @@ DEPENDENCIES
   bootstrap-datepicker-rails
   bootstrap-kaminari-views
   bootstrap-sass (= 3.2.0.0)
+  bootstrap3-datetimepicker-rails
   breadcrumbs_on_rails
   bullet
   business_time
@@ -407,6 +412,7 @@ DEPENDENCIES
   letter_opener
   listen
   mini_magick
+  momentjs-rails
   mysql2 (~> 0.3.20)
   omniauth-facebook
   paranoia!

@@ -79,3 +79,11 @@ en:
   reviews:
     content: Please Input Review
   add_condition: "Add Condition"
+  events:
+    title: "Events"
+    created: "Event created"
+    not_created: "Event not created"
+    updated: "Event updated"
+    not_updated: "Event not updated"
+    deleted: "Event deleted"
+    not_deleted: "Event not deleted"

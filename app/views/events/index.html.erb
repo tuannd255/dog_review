@@ -1,0 +1,16 @@
+<div id="events">
+  <div class="col-md-4">
+    <div class="text-center">
+      <h2>List Events</h2>
+      <div class="text-center">
+        <%= link_to "New Event", new_event_path, class: "btn btn-sm btn-success" %>
+      </div><hr>
+      <%= render @events %>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="event-info">
+      <%= render "event_info" if @event %>
+    </div>
+  </div>
+</div>

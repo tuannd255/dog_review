@@ -9,7 +9,7 @@ class Ability
       if namespace == "admin"
         cannot :manage, :all
       else
-        can [:read, :create, :destroy], Dog
+        can [:read, :create, :destroy], [Dog, Event]
         can [:update], Dog do |other_dog|
           other_dog.user == user
         end
@@ -18,6 +18,9 @@ class Ability
           user == other_user
         end
         can [:create, :destroy, :read], Favorite
+        can :update, Event do |other_event|
+          other_event.user == user
+        end
       end
     end
   end

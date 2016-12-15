@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   resources :reviews
   resources :favorites, only: [:create, :destroy, :index]
   resources :compares
+  resources :events
 end
